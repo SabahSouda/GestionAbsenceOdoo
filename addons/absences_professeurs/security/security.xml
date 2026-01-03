@@ -1,0 +1,8 @@
+<odoo>
+    <!-- Groupe Gestionnaire -->
+    <record id="group_gestionnaire" model="res.groups">
+        <field name="name">Gestionnaire d'Absences</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>

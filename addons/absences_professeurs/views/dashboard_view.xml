@@ -1,0 +1,193 @@
+<odoo>
+    <record id="view_absence_dashboard" model="ir.ui.view">
+        <field name="name">absence.dashboard.form</field>
+        <field name="model">absence.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Tableau de bord" class="o_dashboard">
+                <sheet>
+                    <div class="oe_title text-center" style="margin-top: 50px; margin-bottom: 60px;">
+                        <h1 style="color: #714B67; font-weight: 900; font-size: 42px; text-shadow: 2px 2px 4px rgba(0,0,0,0.05);">
+                            Gestion des Absences
+                        </h1>
+                        <p style="font-size: 18px; color: #888;">Bienvenue dans votre portail de gestion des présences.</p>
+                    </div>
+                    
+                    <div class="row justify-content-center" style="margin-top: 50px; display: flex; gap: 40px; padding: 0 10px;">
+                        <!-- Professor Portal Card -->
+                        <div style="flex: 1; max-width: 450px;">
+                            <button name="action_open_professeur"
+                                    type="object"
+                                    class="btn_portal_prof">
+                                <div class="icon_container">
+                                    <i class="fa fa-user-plus" style="font-size: 36px;"/>
+                                </div>
+                                <span style="font-size: 24px; font-weight: 800;">Mon Espace (Professeur)</span>
+                                <p style="margin-top: 15px; font-size: 14px; opacity: 0.8; text-align: center;">Déclarer une absence rapidement et simplement.</p>
+                            </button>
+                        </div>
+
+                        <!-- Responsable Portal Card -->
+                        <div style="flex: 1; max-width: 450px;">
+                            <button name="action_open_responsable"
+                                    type="object"
+                                    class="btn_portal_respo">
+                                <div class="icon_container">
+                                    <i class="fa fa-tachometer" style="font-size: 36px;"/>
+                                </div>
+                                <span style="font-size: 24px; font-weight: 800;">Espace Responsable</span>
+                                <p style="margin-top: 15px; font-size: 14px; opacity: 0.8; text-align: center;">Consulter les statistiques et valider les demandes.</p>
+                            </button>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue Tableau de Bord pour le Responsable (Creative Redesign) -->
+    <record id="view_absence_dashboard_respo" model="ir.ui.view">
+        <field name="name">absence.dashboard.form.respo</field>
+        <field name="model">absence.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Espace Responsable" class="o_dashboard_premium">
+                <sheet>
+                    <!-- Header with Title and Quick Action -->
+                    <div class="row align-items-center mb-4" style="border-bottom: 2px solid #f0f0f0; padding-bottom: 20px;">
+                        <div class="col-8">
+                            <h1 style="color: #714B67; font-weight: 800; margin: 0; font-size: 28px;">
+                                <i class="fa fa-tachometer mr-2"/>Espace Responsable
+                            </h1>
+                            <p style="color: #888; margin: 5px 0 0 0;">Visualisez les statistiques et gérez les absences en un coup d'œil.</p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <button name="action_open_liste_professeurs" 
+                                    string="Gérer les Professeurs" 
+                                    type="object" 
+                                    icon="fa-users" 
+                                    class="btn-primary"
+                                    style="border-radius: 20px; padding: 10px 25px; font-weight: bold; box-shadow: 0 4px 15px rgba(113, 75, 103, 0.2); border: none; background: linear-gradient(135deg, #714B67 0%, #9b6a8d 100%);"/>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Bar -->
+                    <div class="row mb-5" style="display: flex; justify-content: space-around; gap: 20px; padding: 0 10px;">
+                        <!-- Total Card -->
+                        <div class="stat_card_premium" style="flex: 1;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="stat_icon_box bg_blue_light">
+                                    <i class="fa fa-list" style="font-size: 24px;"/>
+                                </div>
+                                <div>
+                                    <div style="font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Total Absences</div>
+                                    <field name="count_total" style="font-size: 28px; font-weight: 800; color: #333; display: block;"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Card -->
+                        <div class="stat_card_premium" style="flex: 1;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="stat_icon_box bg_orange_light">
+                                    <i class="fa fa-clock-o" style="font-size: 24px;"/>
+                                </div>
+                                <div>
+                                    <div style="font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">En Attente</div>
+                                    <field name="count_pending" style="font-size: 28px; font-weight: 800; color: #F5A623; display: block;"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Validated Card -->
+                        <div class="stat_card_premium" style="flex: 1;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="stat_icon_box bg_green_light">
+                                    <i class="fa fa-check-circle" style="font-size: 24px;"/>
+                                </div>
+                                <div>
+                                    <div style="font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Déjà Validées</div>
+                                    <field name="count_validated" style="font-size: 28px; font-weight: 800; color: #7ED321; display: block;"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Refused Card -->
+                        <div class="stat_card_premium" style="flex: 1;">
+                            <div style="display: flex; align-items: center;">
+                                <div class="stat_icon_box bg_red_light">
+                                    <i class="fa fa-times-circle" style="font-size: 24px;"/>
+                                </div>
+                                <div>
+                                    <div style="font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Refusées</div>
+                                    <field name="count_refused" style="font-size: 28px; font-weight: 800; color: #d9534f; display: block;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integrated Absences List Section -->
+                    <div class="registry_card">
+                        <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                            <div style="width: 4px; height: 25px; background: #714B67; border-radius: 2px; margin-right: 15px;"></div>
+                            <h2 style="font-size: 20px; font-weight: 700; color: #333; margin: 0;">Registre des Absences</h2>
+                        </div>
+                        
+                        <field name="absence_ids" mode="tree" style="border: none;"
+                               context="{'form_view_ref': 'absences_professeurs.view_absence_form_respo'}">
+                            <tree string="Absences" create="0" delete="0" decoration-muted="etat == 'refuse'">
+                                <field name="professeur_id" optional="show"/>
+                                <field name="matiere" optional="show"/>
+                                <field name="date_absence"/>
+                                <field name="motif" optional="show"/>
+                                <field name="etat" widget="badge" decoration-info="etat == 'en_attente'" decoration-success="etat == 'valide'" decoration-danger="etat == 'refuse'"/>
+                            </tree>
+                        </field>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_absence_dashboard" model="ir.actions.act_window">
+        <field name="name">Accueil</field>
+        <field name="res_model">absence.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+    <!-- Vue Gestion des Professeurs (Formulaire avec liste intégrée) -->
+    <record id="view_absence_dashboard_prof_manager" model="ir.ui.view">
+        <field name="name">absence.dashboard.form.prof.manager</field>
+        <field name="model">absence.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Gestion des Professeurs">
+                <header>
+                    <button name="action_open_responsable" 
+                            string="Retour au Tableau de Bord" 
+                            type="object" 
+                            class="btn-secondary" 
+                            icon="fa-arrow-left"
+                            style="border-radius: 20px; font-weight: bold;"/>
+                </header>
+                <sheet>
+                    <div class="row align-items-center mb-4" style="border-bottom: 2px solid #f0f0f0; padding-bottom: 20px;">
+                        <div class="col-12">
+                            <h1 style="color: #714B67; font-weight: 800; margin: 0; font-size: 28px;">
+                                <i class="fa fa-users mr-2"/>Gestion des Professeurs
+                            </h1>
+                            <p style="color: #888; margin: 5px 0 0 0;">Gérez la liste de vos enseignants et leurs matières respectives.</p>
+                        </div>
+                    </div>
+
+                    <div class="registry_card">
+                        <field name="professeur_master_ids" mode="tree">
+                            <tree string="Liste des Professeurs" editable="bottom">
+                                <field name="name"/>
+                                <field name="matiere"/>
+                                <field name="absence_count" string="Total Absences"/>
+                            </tree>
+                        </field>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

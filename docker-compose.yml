@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16
+    container_name: odoo_db_absences
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: odoo_absences
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - odoo-db-data-absences:/var/lib/postgresql/data
+
+  odoo17:
+    image: odoo:17.0
+    container_name: odoo_app_absences
+    depends_on:
+      - db
+    ports:
+      - "8070:8069"
+    volumes:
+      - odoo-web-data-absences:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    command: >
+      odoo -d odoo_absences
+      -i base 
+      --dev=xml
+      --db_user=odoo
+      --db_password=odoo
+      --db_host=db
+
+volumes:
+  odoo-web-data-absences:
+  odoo-db-data-absences:

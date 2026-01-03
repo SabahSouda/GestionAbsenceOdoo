@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Vue Formulaire pour les Professeurs (Saisie) -->
+    <record id="view_absence_form_prof" model="ir.ui.view">
+        <field name="name">absence.professeur.form.prof</field>
+        <field name="model">absence.professeur</field>
+        <field name="arch" type="xml">
+            <form string="Saisir mon Absence">
+                <header>
+                    <button name="action_save_and_back" string="Confirmer l'Absence" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Déclaration d'Absence</h1>
+                    </div>
+                    <group>
+                        <field name="professeur_id" options="{'no_open': True, 'no_create': True}"/>
+                        <field name="matiere"/>
+                        <field name="date_absence"/>
+                        <field name="motif" placeholder="Raison de l'absence..."/>
+                        <field name="etat" readonly="1" force_save="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue Formulaire pour les Responsables (Validation) -->
+    <record id="view_absence_form_respo" model="ir.ui.view">
+        <field name="name">absence.professeur.form.respo</field>
+        <field name="model">absence.professeur</field>
+        <field name="arch" type="xml">
+            <form string="Validation d'Absence">
+                <header>
+                    <button name="action_valider" string="Valider" type="object" class="oe_highlight" invisible="etat != 'en_attente'"/>
+                    <button name="action_refuser" string="Refuser" type="object" class="btn-danger" invisible="etat != 'en_attente'"/>
+                    <field name="etat" widget="statusbar" statusbar_visible="en_attente,valide,refuse"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="professeur_id" readonly="1"/>
+                            <field name="matiere" readonly="1"/>
+                            <field name="date_absence" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Motif de l'absence">
+                        <field name="motif" nolabel="1" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_absence_tree_respo" model="ir.ui.view">
+        <field name="name">absence.professeur.tree.respo</field>
+        <field name="model">absence.professeur</field>
+        <field name="arch" type="xml">
+            <tree string="Espace Responsable" create="0">
+                <header>
+                    <!-- On utilise des boutons statiques ou des labels pour simuler le dashboard en haut de la liste -->
+                    <button name="%(absences_professeurs.action_absence_dashboard)d" string="Actualiser Stats" type="action" class="btn-secondary"/>
+                </header>
+                <field name="professeur_id"/>
+                <field name="matiere"/>
+                <field name="date_absence"/>
+                <field name="motif"/>
+                <field name="etat" widget="badge" decoration-info="etat == 'en_attente'" decoration-success="etat == 'valide'" decoration-danger="etat == 'refuse'"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

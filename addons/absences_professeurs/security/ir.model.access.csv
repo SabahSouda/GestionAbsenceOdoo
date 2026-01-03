@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_absence_professeur,absence.professeur,model_absence_professeur,base.group_user,1,1,1,1
+access_absence_dashboard,absence.dashboard,model_absence_dashboard,base.group_user,1,1,1,1
+access_absence_professeur_master,absence.professeur.master,model_absence_professeur_master,base.group_user,1,1,1,1

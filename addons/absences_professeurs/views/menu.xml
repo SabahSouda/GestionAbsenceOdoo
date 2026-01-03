@@ -1,0 +1,21 @@
+<odoo>
+    <!-- Action -->
+    <record id="action_absence_professeur" model="ir.actions.act_window">
+        <field name="name">Absences</field>
+        <field name="res_model">absence.professeur</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu principal -->
+    <menuitem id="menu_gestion_absences_root" 
+              name="Gestion des Absences"
+              web_icon="base,static/description/icon.png"/>
+
+    <!-- Menu Accueil (Landing Page) -->
+    <menuitem id="menu_dashboard_absence"
+              name="Accueil"
+              parent="menu_gestion_absences_root"
+              sequence="1"
+              action="action_absence_dashboard"/>
+
+</odoo>

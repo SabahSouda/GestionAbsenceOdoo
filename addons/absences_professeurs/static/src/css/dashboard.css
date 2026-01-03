@@ -1,0 +1,102 @@
+/* Main Dashboard Styles */
+.o_dashboard_premium {
+    background-color: #f8f9fa !important;
+}
+
+/* Home Page Tiles */
+.btn_portal_prof,
+.btn_portal_respo {
+    border: none !important;
+    border-radius: 30px !important;
+    transition: all 0.3s ease-out !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 250px !important;
+    color: white !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn_portal_prof {
+    background: linear-gradient(135deg, #714B67 0%, #9b6a8d 100%) !important;
+}
+
+.btn_portal_respo {
+    background: linear-gradient(135deg, #5cb85c 0%, #4cae4c 100%) !important;
+}
+
+.btn_portal_prof:hover,
+.btn_portal_respo:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+    filter: brightness(1.1) !important;
+}
+
+.icon_container {
+    background: rgba(255, 255, 255, 0.2) !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 20px !important;
+}
+
+/* Stat Cards */
+.stat_card_premium {
+    background: white !important;
+    border-radius: 20px !important;
+    padding: 25px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #eee !important;
+    transition: all 0.3s ease !important;
+}
+
+.stat_card_premium:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat_icon_box {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 20px !important;
+}
+
+.bg_blue_light {
+    background: rgba(74, 144, 226, 0.1) !important;
+    color: #4A90E2 !important;
+}
+
+.bg_orange_light {
+    background: rgba(245, 166, 35, 0.1) !important;
+    color: #F5A623 !important;
+}
+
+.bg_green_light {
+    background: rgba(126, 211, 33, 0.1) !important;
+    color: #7ED321 !important;
+}
+
+.bg_red_light {
+    background: rgba(217, 83, 79, 0.1) !important;
+    color: #d9534f !important;
+}
+
+/* Registry Card */
+.registry_card {
+    background: white !important;
+    border-radius: 25px !important;
+    padding: 30px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid #f5f5f5 !important;
+    margin-top: 30px !important;
+}
