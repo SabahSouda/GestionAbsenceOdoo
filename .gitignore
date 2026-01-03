@@ -1,0 +1,58 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
+# --- Odoo ---
+*.zip
+*.tar
+*.tar.gz
+*.db
+*.sql
+*.session
+*.cache
+*.tmp
+*.bak
+
+# --- Docker ---
+*.pid
+*.seed
+*.pid.lock
+.env
+.env.local
+.env.*.local
+
+# --- VS Code ---
+.vscode/
+.history/
+*.code-workspace
+
+# --- LaTeX ---
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Node / Frontend (si utilisé) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
